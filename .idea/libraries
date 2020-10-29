@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="libraryTable">
+    <library name="jdk1.8">
+      <CLASSES />
+      <JAVADOC />
+      <SOURCES>
+        <root url="file://D:/JAVA/jdk1.8.0_261" />
+      </SOURCES>
+      <jarDirectory url="file://D:/JAVA/jdk1.8.0_261" recursive="false" type="SOURCES" />
+    </library>
+  </component>
+</project>

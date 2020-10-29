@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    #使用开发者配置
+    active: dev
+
+comment.avatar: /images/avatar.png

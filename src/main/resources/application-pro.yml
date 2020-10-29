@@ -1,0 +1,24 @@
+#生产环境配置
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&charactorEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 159369369q
+  #持久层配置
+  jpa:
+    hibernate:
+      #表结构不可改变
+      ddl-auto: none
+    show-sql: true
+#日志配置
+logging:
+  #日志级别
+  level:
+    root: warn
+    com.bei: info
+  file:
+    path: log/blog-pro.log
+server:
+  port: 8081

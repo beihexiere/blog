@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>错误</title>
+</head>
+<body class="index-bg">
+<!--导航-->
+<nav th:replace="_fragments :: menu(0)" class="ui  attached segment m-padded-tb-mini m-shadow-small"></nav>
+<!--中间-->
+<div class="m-container m-padded-tb-massive">
+    <div class="ui error message m-padded-tb-massive">
+        <div class="ui contianer">
+            <h1>错误</h1>
+            <p>对不起，服务器异常，非承抱歉给您带来不便~</p>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-td-huge"></footer>
+</body>
+</html>

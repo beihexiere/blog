@@ -1,0 +1,25 @@
+#开发者环境配置
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&charactorEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 159369369q
+  #持久层配置
+  jpa:
+    hibernate:
+      #表结构可更新
+      ddl-auto: update
+    show-sql: true
+#日志配置
+logging:
+  #日志级别
+  level:
+    root: info
+    com.bei: debug
+  file:
+    path: log/blog-dev.log
+#端口号设置为80
+server:
+  port: 80

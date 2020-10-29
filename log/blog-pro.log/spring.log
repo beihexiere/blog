@@ -1,0 +1,14 @@
+2020-08-17 16:04:03.538  INFO 9040 --- [main] com.bei.BlogApplicationTests             : Starting BlogApplicationTests on PC-20170913ORVJ with PID 9040 (started by Administrator in D:\code\blog)
+2020-08-17 16:04:03.542  INFO 9040 --- [main] com.bei.BlogApplicationTests             : The following profiles are active: pro
+2020-08-17 16:04:05.248  WARN 9040 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bei]' package. Please check your configuration.
+2020-08-17 16:04:08.855  WARN 9040 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-17 16:04:10.026  WARN 9040 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-08-17 16:04:10.720  INFO 9040 --- [main] com.bei.BlogApplicationTests             : Started BlogApplicationTests in 7.859 seconds (JVM running for 10.222)
+2020-08-17 16:04:11.806  WARN 9040 --- [task-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-08-17 16:04:17.212  INFO 11436 --- [restartedMain] com.bei.BlogApplication                  : Starting BlogApplication on PC-20170913ORVJ with PID 11436 (D:\code\blog\target\classes started by Administrator in D:\code\blog)
+2020-08-17 16:04:17.216  INFO 11436 --- [restartedMain] com.bei.BlogApplication                  : The following profiles are active: pro
+2020-08-17 16:04:18.434  WARN 11436 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bei]' package. Please check your configuration.
+2020-08-17 16:04:19.526  WARN 11436 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-17 16:04:19.987  WARN 11436 --- [task-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-08-17 16:04:20.023  WARN 11436 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-08-17 16:04:20.471  INFO 11436 --- [restartedMain] com.bei.BlogApplication                  : Started BlogApplication in 3.854 seconds (JVM running for 5.055)

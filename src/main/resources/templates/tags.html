@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css"/>
+    <title>标签</title>
+</head>
+<body class="index-bg">
+<!--导航-->
+<nav th:replace="_fragments :: menu(3)" class="ui  attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui  secondary stackable menu">
+            <h2 class="ui violet header item">ShellBook</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clipboard icon"></i>分类</a>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="hourglass half icon"></i>时间轴</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon   input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle icon button m-right-top m-mobile-show">
+        <i class="bars icon"></i>
+    </a>
+</nav>
+<!--中间内容 -->
+<div class="m-container m-padded-td-large animate__animated animate__backInLeft animate__fast">
+    <div class="ui container">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <!--header-->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui violet header">标签</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui blue header m-inline-block m-text-thin" th:text="${#arrays.length(tags)}"> 14 </h2> 个
+                </div>
+            </div>
+        </div>
+        <!-- type -->
+        <div class="ui attached segment m-padded-td-large">
+            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic left pointing label m-padded-td m-margin-tb-small" th:classappend="${tag.id==activeTagId} ? 'violet'" th:each="tag : ${tags}">
+                <span th:text="${tag.name}">Java</span>
+                <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+            </a>
+        </div>
+        <!-- content -->
+
+        <div class="ui attached segment">
+            <div class="ui padded vertical segment m-padded-td-large" th:each="blog : ${page.content}">
+                <div class="ui middle aligned mobile reversed stackable grid" >
+                    <div class="ten wide column">
+                        <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">博客标题</a></h3>
+                        <p class="m-text" th:text="|${blog.description}......|">
+                            党的十八大提出，倡导富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善，积极培育和践行社会主义核心价值观。富强、民主、文明、和谐是国家层面的价值目标，自由、平等、公正、法治是社会层面的价值取向，爱国、敬业、诚信、友善是公民个人层面的价值准则，这24个字是社会主义核心价值观的基本内容。
+                        </p>
+                        <div class="ui grid">
+                            <div class="row">
+                                <div class="eleven wide column">
+                                    <div class="ui mini horizontal link list">
+                                        <div class="item">
+                                            <img src="" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                                            <div class="content">
+                                                <a href="#" th:href="@{/about}" th:text="${blog.user.nickname}" class="header">Albatross</a>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-3-02</span>
+                                        </div>
+                                        <div class="item">
+                                            <i class="eye icon"></i><span th:text="${blog.views}">2342</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right aligned five wide column">
+                                    <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}" target="_blank" class="ui violet basic label m-padded-tiny m-text-thin" th:text="${blog.type.name}">认知升级</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column">
+                                    <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic left pointing label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId} ? 'violet'" th:each="tag : ${blog.tags}">
+                                        <span th:text="${tag.name}">css</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="six wide column">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                            <img src="" th:src="@{${blog.firstPicture}}" class="ui rounded image"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui violet basic button">上一页</a>
+                </div>
+                <div class="right aligned column">
+                    <a href="#" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui violet basic button">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!--右下角浮动的图标-->
+<!-- <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
+    <div class="ui vertical icon buttons ">
+        <button type="button" class="ui toc pink button" >目录</button>
+        <a href="#comment-container" class="ui pink button" >留言</a>
+        <button class="ui wechat icon button"><i class="weixin icon"></i></button>
+        <div id="toTop-button" class="ui icon button" ><i class="chevron up icon"></i></div>
+    </div>
+</div>
+<div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+    <ol class="js-toc">
+    </ol>
+</div>
+<div id="qrcode" class="ui wechat-qr flowing popup transition hidden "style="width: 130px !important;">
+    <img src="static/images/wechat.jpg" alt=""  class="ui rounded image" style="width: 120px !important;">
+</div>
+<br>
+<br> -->
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-td-huge ">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" style="width: 110px"/>
+                    </div>
+                </div>
+            </div>
+            <div class="five wide column">
+                <h4 class="ui inverted header m-text-thin m-text-space">联系方式</h4>
+                <div class="ui inverted link list">
+                    <a class="item">Email:1055105576@qq.com</a>
+                    <a class="item">QQ:1055105576</a>
+                    <a class="item">微信:f1055105576</a>
+                </div>
+            </div>
+            <div class="six wide column">
+                <h4 class="ui inverted header m-text-thin m-text-space">Albatross</h4>
+                <p class="m-text-thin m-text-space m-opacity-mini">个人博客平台、主要用来记录一下学习、工作、生活各个方面值得记录的信息，自己做的第一个项目！</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-space m-opacity-mini">Copyright © 2020 - 2021 ShellBook Designed by Albatross</p>
+    </div>
+</footer>
+
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/</th:block>/*/-->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+</body>
+</html>
